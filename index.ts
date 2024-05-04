@@ -10,8 +10,8 @@ let numArr2: Array<number> = [1, 2, 3];
 type PersonTypes = {
   name: string;
   readonly age?: number | string;
-  // ? ==> optional yeni field olsa da olar olmasa da
-  // readonly ==> bunun deyerin deyismek olmaz
+  // ? ==> optional field is not required
+  // readonly ==> the fields value can't change 
 };
 
 let person: PersonTypes = {
@@ -80,7 +80,7 @@ let sum = calc;
 console.log(sum(1, 2)); // output = 3
 
 const calc2 = (x: number, y: number): void => {
-  // return x + y; // void yenu hec ne return etmir sadece oxutdura bilersen
+  // return x + y; // void ==> can't return something
 };
 let sum2 = calc2;
 console.log(sum2(1, 2)); // output = 3
@@ -95,13 +95,13 @@ interface FunctionParametrTypes {
 const calcSum = ({ x, y, z }: FunctionParametrTypes): number => {
   return x + y + z;
 };
-//let cvb: (params: FunctionParametrTypes) => number = calcSum;
+
 
 let result = calcSum({ x: 1, y: 2, z: 3 });
 console.log(result); // Output: 6
 
-// keyof
 
+// keyof
 type Test = {
   a: string;
   b: string;
@@ -110,8 +110,8 @@ type Test = {
 
 type Test2 = keyof Test; // ==> "a" | "b" | "c"
 
-// extending Types this is accessable only with interfaces
 
+// extending Types || this is accessable only with interfaces
 interface ParentType {
   name?: string;
   age?: number;
@@ -128,7 +128,7 @@ let persons: ChildType = {
   hobbies: [1, 2],
 };
 
-// Utility types
+// Utility types Partial,Required,Readonly,Pick,Omit
 interface User {
   name: string;
   age: number;
@@ -137,7 +137,7 @@ interface User {
 let Tohid: Partial<User> = {};
 // note: Parial keyword makes all fields optional
 
-// Utility types
+
 
 interface Qadir {
   name?: string;
@@ -159,7 +159,7 @@ let user: Readonly<UserObjectType> = {
 let Ruslan: Pick<User, "name" | "age"> = {
 
 }
-// Pick keyword makes an interface for you with keys it require 2 parametr 1:Type in this case is it User type 2: Keys keys are free 
+// Pick keyword makes an interface for you with keys it require 2 parameters 1:Type in this case is it User type, 2: Keys keys are free 
 
 interface User {
     name?: string,
